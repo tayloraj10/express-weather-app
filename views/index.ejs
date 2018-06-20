@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places,drawing,geometry&key=AIzaSyAf-6tsTGCPib1xkDgVkTcZp_G6uSMHBCg&v=3"></script>
+  </head>
+  <body>
+    <div class="container">
+      <fieldset>
+        <form action="/" method="post">
+          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+          <input type="submit" class="ghost-button" value="Get Weather">
+        </form>
+        <% if(weather !== null){ %>
+          <p><%= weather %></p>
+        <% } %>
+
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+      </fieldset>
+    </div>
+    <script>
+      const autocomplete = new google.maps.places.Autocomplete(document.getElementsByClassName('ghost-input')[0], {types: ['(cities)'], componentRestrictions: {country: "us"}})
+    </script>
+  </body>
+</html>
